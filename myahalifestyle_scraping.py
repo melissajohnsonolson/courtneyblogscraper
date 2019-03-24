@@ -11,9 +11,7 @@ import time, os
 from bs4 import BeautifulSoup
 import pandas as pd
 from docx import Document
-from docx.shared import Pt
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.style import WD_STYLE_TYPE
+
 
 os.chdir('C:/mydirectory...')
 
