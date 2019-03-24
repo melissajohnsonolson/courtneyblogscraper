@@ -15,7 +15,7 @@ import re
 import os
 
 #This is the location where you want to store the final word document
-os.chdir('C:/Users/johns/Documents/Courtney Dad Blog Text')
+os.chdir('C:/mydirectory...')
 
 #Here is the start page, or first page of the blog
 start_page = "https://redhogdiary.wordpress.com/"
@@ -24,7 +24,8 @@ start_page = "https://redhogdiary.wordpress.com/"
 #before it's called for scrapping
 queue = []
 
-#All of the urls are stored here. This also ensures the script stops, rather
+#All of the urls are stored here. This also ensures the script stops at the
+#end of the blog, rather
 #than alternately loading the last two pages infinitely
 list_links = []
 
@@ -40,7 +41,7 @@ def link_getter(url):
     #to navigate the page
     r = requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
-    #All of the blog titles have an 'a' tag and hace no class attribute,
+    #All of the blog titles have an 'a' tag and have no class,
     #but are marked as a title.  This findAll collects all of the elements
     #that match the tag and attribute
     titles_group = soup.findAll('a', attrs = {'title':True, 'class':False})
@@ -56,7 +57,7 @@ def link_getter(url):
     
     #Here is where we find the url for the next page.  It falls under its own
     #div block with a class name of navigation. Typically the last entry in this
-    #set of  results is typicaly the next page, until we get to the last page, 
+    #set of  results is the next page, until we get to the last page, 
     #where the last entry is the previous page's url.  This is why we check
     #list_links list to make sure we haven't accessed it before
     links = soup.find('div', {'class':'navigation'}).findAll('a')
